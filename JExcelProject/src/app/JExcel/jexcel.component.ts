@@ -58,10 +58,10 @@ export class JExcelComponent {
 
 
   ngOnInit(): void {
-
+    this.UpdateJExcel();
   }
 
-  ngAfterViewInit(): void {
+  UpdateJExcel(){
     this._JExcel.setupExternalFiles().subscribe((response: boolean) => {
       if (response) {
         this.JSpreadsheet = jspreadsheet(this.spreadsheet?.nativeElement, {
@@ -146,6 +146,11 @@ export class JExcelComponent {
     }
   }
 
+  GetJSpreadsheetObject(){
+    return this.JSpreadsheet;
+  }
+
+  RefreshExcel() { if (this.JSpreadsheet) { return this.JSpreadsheet.refresh(); } else { return null; } }
   GetData(onlyHighlighedCells: boolean = false) { if (this.JSpreadsheet) { return this.JSpreadsheet.getData(onlyHighlighedCells); } else { return null; } }
   GetRowData(rowNumber: number) { if (this.JSpreadsheet) { return this.JSpreadsheet.getRowData(rowNumber); } else { return null; } }
   SetRowData(rowNumber: number, rowData: Array<any>) { if (this.JSpreadsheet) { return this.JSpreadsheet.setRowData(rowNumber, rowData); } else { return null; } }

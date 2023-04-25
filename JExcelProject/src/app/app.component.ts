@@ -22,40 +22,21 @@ export class AppComponent {
         type: 'text',
         title: 'Name',
       },
-      {
-        type: 'text',
-        title: 'Thumbnail Link',
-      },
-      {
-        type: 'text',
-        title: 'Type',
-      },
-      {
-        type: 'text',
-        title: 'Size',
-      },
-      {
-        type: 'text',
-        title: 'Email',
-      },
-      {
-        type: 'text',
-        title: 'Link',
-      },
-      {
-        type: 'text',
-        title: 'Password',
-      },
-      {
-        type: 'text',
-        title: 'OtherData',
-      },
+      { type: 'dropdown', source: [ {'id':'1', 'name':'Fruits'},  {'id':'2', 'name':'Legumes'}, {'id':'3', 'name':'General Food'} ] },
     ]
 
     this.Data = [];
 
     setTimeout(() => {
-      this.JEXCELCOM?.SetRowData(1,['as','asd','asd','asda','as','asd','asd','asda','as','asd','asd','asda'])
+      this.Columns = [
+        {
+          type: 'text',
+          title: 'Name',
+        },
+        { type: 'dropdown', source: [ "a","b","c" ] },
+      ]
+      this.JEXCELCOM?.RefreshExcel();
+      console.log(this.JEXCELCOM?.GetJSpreadsheetObject().updateOptions(1, 1, ['as','asd','asd','asda','as','asd','asd','asda','as','asd','asd','asda']));
     }, 1000);
   }
 
