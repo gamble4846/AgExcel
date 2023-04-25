@@ -21,8 +21,9 @@ export class AppComponent {
       {
         type: 'text',
         title: 'Name',
+        agOnChange: () => { console.log("here") },
       },
-      { type: 'dropdown', source: [ {'id':'1', 'name':'Fruits'},  {'id':'2', 'name':'Legumes'}, {'id':'3', 'name':'General Food'} ] },
+      { type: 'agDropdown', source: [ {'id':'1', 'name':'Fruits'},  {'id':'2', 'name':'Legumes'}, {'id':'3', 'name':'General Food'} ] },
     ]
 
     this.Data = [];
