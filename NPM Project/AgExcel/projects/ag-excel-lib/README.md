@@ -1,24 +1,31 @@
-# AgExcelLib
+# AgExcel
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+AgExcel is an Angular Wrapper for [JExcel V3](https://www.npmjs.com/package/jexcel).
 
-## Code scaffolding
+## Installation
+###### Install ag-excel
+`npm i ag-excel`
+###### Import Assets
+Import the assets in angular.json
+```json
+{
+  "architect": {
+    "assets": [
+		{
+		  "glob": "**/*",
+		  "input": "./node_modules/ag-excel/assets/AgExcel",
+		  "output": "./assets/AgExcel"
+		}
+	]
+  }
+}
+```
 
-Run `ng generate component component-name --project AgExcelLib` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project AgExcelLib`.
-> Note: Don't forget to add `--project AgExcelLib` or else it will be added to the default project in your `angular.json` file. 
+## Documentation
+[Documentation](https://gamble4846.github.io/AgExcel/Documentation/)
 
-## Build
+## Demo
+[Demo](https://gamble4846.github.io/AgExcel/Demo/)
 
-Run `ng build AgExcelLib` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build AgExcelLib`, go to the dist folder `cd dist/ag-excel-lib` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test AgExcelLib` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Github Repository Link
+[Github](https://github.com/gamble4846/AgExcel)

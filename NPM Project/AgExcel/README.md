@@ -22,3 +22,10 @@ Import the assets in angular.json
 ```
 
 ## Documentation
+[Documentation](https://gamble4846.github.io/AgExcel/Documentation/)
+
+## Demo
+[Demo](https://gamble4846.github.io/AgExcel/Demo/)
+
+## Github Repository Link
+[Github](https://github.com/gamble4846/AgExcel)
