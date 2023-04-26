@@ -20,3 +20,5 @@ Import the assets in angular.json
   }
 }
 ```
+
+## Documentation

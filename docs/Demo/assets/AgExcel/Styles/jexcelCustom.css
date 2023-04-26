@@ -1,0 +1,61 @@
+.jexcel {
+    border: 0px;
+}
+
+.jexcel_content{
+    padding: 0px;
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    display: block;
+}
+
+.jexcel_container{
+    padding: 0px;
+    display: block;
+    max-width: max-content;
+}
+
+.jexcelContainer{
+    font-family: Rubik;
+}
+
+.jexcel > tbody > tr > td:first-child{
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #cccccc;
+}
+
+.jexcel > thead > tr > td:first-child{
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #cccccc;
+    z-index: 21;
+}
+
+.jexcel > tbody > tr > td:nth-child(2){
+    border-left: 0px;
+}
+
+.jexcel > thead > tr > td:nth-child(2){
+    border-left: 0px;
+}
+
+.jexcel > thead > tr > td{
+    border-bottom: 1px solid #cccccc;
+}
+
+.jexcel > tbody > tr:first-child > td{
+    border-top: 0px;
+}
+
+.jexcel > tbody > tr > td.readonly {
+    color: rgba(0,0,0,0.3);
+    background-color: #f3f3f3;
+}
+
+@font-face {
+    font-family: Rubik;
+    src: url("../Fonts/Rubik.ttf");
+}
