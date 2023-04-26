@@ -18,11 +18,17 @@
     <nav class="" id="navbar">
         <div class="navbar-top">
             <header style="margin-bottom: 10px;">AgExcel</header>
-            <input id="searchbar" type="text" placeholder="Search docs" aria-label="Search question" oninput="search()">
+            <input id="searchbar" type="text" placeholder="Search docs" aria-label="Search question" oninput="search">
         </div>
         <ul>
             <li>
                 <a class="nav-link" href="#Introduction">Introduction</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Outputs">Outputs</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Inputs">Inputs</a>
             </li>
         </ul>
         <p class="creator">Made by <a href="mailto:rohanpatel4846@gmail.com">Rohan Patel</a></p>
@@ -63,6 +69,201 @@
                     styles needs to be loaded before hand, AgExcel takes care of loading all the file for you and
                     AgExcel can be installed to your angular project directly from npm. AgExcel contents all features of
                     JExcel with extra features such as -
+                </p>
+                <ul>
+                    <li>Auto Max Width</li>
+                    <li>OnChange Subjects for Every Column</li>
+                    <li>Type Script - Support</li>
+                </ul>
+                <b>*Next Version of AgExcel will include models for everything (As of now 'any' is used for all) *</b>
+            </article>
+        </section>
+
+        <section id="Outputs" class="main-section">
+            <header class="main-header">
+                <h2>Outputs</h2>
+            </header>
+            <article>
+                <div>
+                    <h3>OnLoad</h3>
+                    <p>Is called when the jexcel is loaded</p>
+                    <p><b>JExcel Docs</b> - [onload] This method is called when the method setData</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnBeforeChange</h3>
+                    <p><b>JExcel Docs</b> - [onbeforechange] Before a column value is changed. NOTE: It is possible to
+                        overwrite the original value, by return a new value on this method. v3.4.0+</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnChange</h3>
+                    <p><b>JExcel Docs</b> - [onchange] After a column value is changed.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnAfterChanges</h3>
+                    <p><b>JExcel Docs</b> - [onafterchanges] After all changes are applied in the table.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnPaste</h3>
+                    <p><b>JExcel Docs</b> - [onpaste] After a paste action is performed in the javascript table.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnBeforePaste</h3>
+                    <p><b>JExcel Docs</b> - [onbeforepaste] Before the paste action is performed. Used to parse any input data, should return the data.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnInsertRow</h3>
+                    <p><b>JExcel Docs</b> - [oninsertrow] After a new row is inserted.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnBeforeInsertRow</h3>
+                    <p><b>JExcel Docs</b> - [onbeforeinsertrow] Before a new row is inserted. You can cancel the insert event by returning false.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnDeleteRow</h3>
+                    <p><b>JExcel Docs</b> - [ondeleterow] After a row is excluded.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnBeforeDeleteRow</h3>
+                    <p><b>JExcel Docs</b> - [onbeforedeleterow] Before a row is deleted. You can cancel the delete event by returning false.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnInsertColumn</h3>
+                    <p><b>JExcel Docs</b> - [oninsertcolumn] After a new column is inserted.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnBeforeInsertColumn</h3>
+                    <p><b>JExcel Docs</b> - [onbeforeinsertcolumn] Before a new column is inserted. You can cancel the insert event by returning false.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnDeleteColumn</h3>
+                    <p><b>JExcel Docs</b> - [ondeletecolumn] After a column is excluded.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnBeforeDeleteColumn</h3>
+                    <p><b>JExcel Docs</b> - [onbeforedeletecolumn] Before a column is excluded. You can cancel the insert event by returning false.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnMoveRow</h3>
+                    <p><b>JExcel Docs</b> - [onmoverow] After a row is moved to a new position.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnMoveColumn</h3>
+                    <p><b>JExcel Docs</b> - [onmovecolumn] After a column is moved to a new position.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnResizeRow</h3>
+                    <p><b>JExcel Docs</b> - [onresizerow] After a change in row height.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnResizeColumn</h3>
+                    <p><b>JExcel Docs</b> - [onresizecolumn] After a change in column width.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnSelection</h3>
+                    <p><b>JExcel Docs</b> - [onselection] On the selection is changed.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnSort</h3>
+                    <p><b>JExcel Docs</b> - [onsort] After a colum is sorted.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnFocus</h3>
+                    <p><b>JExcel Docs</b> - [onfocus] On table focus</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnBlur</h3>
+                    <p><b>JExcel Docs</b> - [onblur] On table blur</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnMerge</h3>
+                    <p><b>JExcel Docs</b> - [onmerge] On column merge</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnChangeHeader</h3>
+                    <p><b>JExcel Docs</b> - [onchangeheader] On header change</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnUndo</h3>
+                    <p><b>JExcel Docs</b> - [onundo] On undo is applied</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnRedo</h3>
+                    <p><b>JExcel Docs</b> - [onredo] On redo is applied</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnEditionStart</h3>
+                    <p><b>JExcel Docs</b> - [oneditionstart] When a openEditor is called.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnEditionEnd</h3>
+                    <p><b>JExcel Docs</b> - [oneditionend] When a closeEditor is called.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnChangeStyle</h3>
+                    <p><b>JExcel Docs</b> - [onchangestyle] When a setStyle is called.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OnChangeMeta</h3>
+                    <p><b>JExcel Docs</b> - [onchangemeta] When a setMeta is called.</p>
+                </div>
+                <hr>
+            </article>
+        </section>
+
+
+        <section id="Inputs" class="main-section">
+            <header class="main-header">
+                <h2>Inputs</h2>
+            </header>
+            <article>
+                <p>
+                    AgExcel is a FREE wrapper library for <a href="https://www.npmjs.com/package/jexcel">JExcel v3</a>
+                </p>
+                <p>
+                    JExcel is a lightweight Vanilla JavaScript plugin to create amazing web-based interactive HTML
+                    tables and spreadsheets compatible with other spreadsheet software. You can create an online
+                    spreadsheet table from a JS array, JSON, CSV or XSLX files. You can copy from excel and paste
+                    straight to your Jspreadsheet CE spreadsheet and vice versa. It is very easy to integrate any third
+                    party JavaScript plugins to create your own custom columns, custom editors, and customize any
+                    feature into your application. Jspreadsheet CE has plenty of different input options through its
+                    native column types to cover the most common web-based application requirements. It is a complete
+                    solution for web data management. Create amazing applications with Jspreadsheet CE JavaScript
+                    spreadsheet
+                </p>
+                <p>
+                    JExcel has an angular library but it is paid. Javascript version can be implemented, but scripts and
+                    styles needs to be loaded before hand, AgExcel takes care of loading all the file for you and
+                    AgExcel can be installed to your angular project directly from npm. AgExcel contents all features of
+                    JExcel with extra features such as -
                     <ul>
                         <li>Auto Max Width</li>
                         <li>OnChange Subjects for Every Column</li>
@@ -72,7 +273,6 @@
                 <b>*Next Version of AgExcel will include models for everything (As of now 'any' is used for all) *</b>
             </article>
         </section>
-
 
     </main>
 </body>
