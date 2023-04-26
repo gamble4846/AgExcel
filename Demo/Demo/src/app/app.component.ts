@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { AgExcelLibComponent } from 'ag-excel';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,45 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Demo';
+  @ViewChild(AgExcelLibComponent) JEXCELCOM:AgExcelLibComponent | undefined;
+
+  title = 'test';
+  Columns: Array<any> = [];
+  Data: Array<any> = [];
+  
+  constructor(
+  ) { }
+
+  ngOnInit(): void {
+    this.Columns = [
+      {
+        type: 'text',
+      },
+      {
+        type: 'text',
+      },
+      {
+        type: 'text',
+      },
+      { 
+        type: 'AgDropDown'
+      },
+    ]
+
+    this.Data = [];
+  }
+
+  AfterOnLoad(data:any){
+    console.log("here");
+    console.log(data);
+    let ColumnOnChangeObs:any = this.JEXCELCOM?.GetColumnsConfig() || [];
+    console.log(this.JEXCELCOM?.GetConfig());
+    ColumnOnChangeObs.AgColumns[0].AgOnChangeSubject.subscribe((response:any) => {
+      console.log(response);
+    })
+  }
+
+  ConsoleThis(data:any){
+    console.log(data);
+  }
 }
