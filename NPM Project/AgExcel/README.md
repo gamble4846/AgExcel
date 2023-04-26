@@ -3,9 +3,9 @@
 AgExcel is an Angular Wrapper for [JExcel V3](https://www.npmjs.com/package/jexcel).
 
 ## Installation
-######Install ag-excel
+###### Install ag-excel
 `npm i ag-excel`
-######Import Assets
+###### Import Assets
 Import the assets in angular.json
 ```json
 {
