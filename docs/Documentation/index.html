@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation - AgExcel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.css">
+    </link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+    <title>AgExcel - Documentation Page</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Documentation</h1>
+    <nav class="" id="navbar">
+        <div class="navbar-top">
+            <header style="margin-bottom: 10px;">AgExcel</header>
+            <input id="searchbar" type="text" placeholder="Search docs" aria-label="Search question" oninput="search()">
+        </div>
+        <ul>
+            <li>
+                <a class="nav-link" href="#Introduction">Introduction</a>
+            </li>
+        </ul>
+        <p class="creator">Made by <a href="mailto:rohanpatel4846@gmail.com">Rohan Patel</a></p>
+    </nav>
+
+    <i class="fas fa-bars hamburger" onclick="hamburger()"></i>
+
+    <main id="main-doc">
+        <h1>AgExcel Documentation</h1>
+
+        <section id="no-match" class="hidden">
+            <header class="main-header">
+                <h2>No matches for the search query.</h2>
+            </header>
+        </section>
+
+        <section id="Introduction" class="main-section">
+            <header class="main-header">
+                <h2>Introduction</h2>
+            </header>
+            <article>
+                <p>
+                    AgExcel is a FREE wrapper library for <a href="https://www.npmjs.com/package/jexcel">JExcel v3</a>
+                </p>
+                <p>
+                    JExcel is a lightweight Vanilla JavaScript plugin to create amazing web-based interactive HTML
+                    tables and spreadsheets compatible with other spreadsheet software. You can create an online
+                    spreadsheet table from a JS array, JSON, CSV or XSLX files. You can copy from excel and paste
+                    straight to your Jspreadsheet CE spreadsheet and vice versa. It is very easy to integrate any third
+                    party JavaScript plugins to create your own custom columns, custom editors, and customize any
+                    feature into your application. Jspreadsheet CE has plenty of different input options through its
+                    native column types to cover the most common web-based application requirements. It is a complete
+                    solution for web data management. Create amazing applications with Jspreadsheet CE JavaScript
+                    spreadsheet
+                </p>
+                <p>
+                    JExcel has an angular library but it is paid. Javascript version can be implemented, but scripts and
+                    styles needs to be loaded before hand, AgExcel takes care of loading all the file for you and
+                    AgExcel can be installed to your angular project directly from npm. AgExcel contents all features of
+                    JExcel with extra features such as -
+                    <ul>
+                        <li>Auto Max Width</li>
+                        <li>OnChange Subjects for Every Column</li>
+                        <li>Type Script - Support</li>
+                    </ul>
+                </p>
+                <b>*Next Version of AgExcel will include models for everything (As of now 'any' is used for all) *</b>
+            </article>
+        </section>
+
+
+    </main>
 </body>
+
 </html>
