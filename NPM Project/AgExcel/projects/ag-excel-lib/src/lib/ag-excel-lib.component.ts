@@ -16,12 +16,14 @@ declare var jspreadsheet: any;
 export class AgExcelLibComponent {
   @ViewChild('spreadsheet', { read: ElementRef })
   spreadsheet: ElementRef<HTMLElement> | undefined;
+  @Input() ngModel: Array<any> = [];
+  @Output() ngModelChange = new EventEmitter<Array<any>>();
 
   @Input() Columns: Array<any> = [];
-  @Input() Data: Array<any> = [];
   @Input() minRows: number = 10;
   @Input() setWidthToMaxParent: boolean = false;
 
+  @Output() AgOnLoad = new EventEmitter<any>();
   @Output() OnLoad = new EventEmitter<any>();
   @Output() OnBeforeChange = new EventEmitter<any>();
   @Output() OnChange = new EventEmitter<any>();
@@ -73,38 +75,38 @@ export class AgExcelLibComponent {
       if (response) {
         this.SetUpColumns();
         this.JSpreadsheet = jspreadsheet(this.spreadsheet?.nativeElement, {
-          data: this.Data,
+          data: this.ngModel,
           columns: this.Columns,
-          onload: (event: any) => { this.OnLoad.emit(event); },
-          onchange: (instance: any, cell: any, x: any, y: any, value: any) => { this.OnChangeCALLBACK(instance, cell, x, y, value); },
-          onbeforechange: (instance: any, cell: any, x: any, y: any, value: any) => { let data = { "instance": instance, "cell": cell, "x": x, "y": y, "value": value }; this.OnBeforeChange.emit(data); },
-          oninsertrow: (event: any) => { this.OnInsertRow.emit(event); },
-          oninsertcolumn: (event: any) => { this.OnInsertColumn.emit(event); },
-          ondeleterow: (event: any) => { this.OnDeleteRow.emit(event); },
-          ondeletecolumn: (event: any) => { this.OnDeleteColumn.emit(event); },
-          onselection: (instance: any, x1: any, y1: any, x2: any, y2: any, origin: any) => { let data = { "instance": instance, "x1": x1, "y1": y1, "x2": x2, "y2": y2, "origin": origin }; this.OnSelection.emit(data); },
-          onsort: (instance: any, cellNum: any, order: any) => { let data = { "instance": instance, "cellNum": cellNum, "order": order }; this.OnSort.emit(data); },
-          onresizerow: (instance: any, cell: any, height: any) => { let data = { "instance": instance, "cell": cell, "height": height }; this.OnResizeRow.emit(data); },
-          onresizecolumn: (instance: any, cell: any, width: any) => { let data = { "instance": instance, "cell": cell, "width": width }; this.OnResizeColumn.emit(data); },
-          onmoverow: (instance: any, from: any, to: any) => { let data = { "instance": instance, "from": from, "to": to }; this.OnMoveRow.emit(data); },
-          onmovecolumn: (instance: any, from: any, to: any) => { let data = { "instance": instance, "from": from, "to": to }; this.OnMoveColumn.emit(data); },
-          onblur: (event: any) => { this.OnBlur.emit(event); },
-          onfocus: (event: any) => { this.OnFocus.emit(event); },
-          onafterchanges: (instance: any, records: any) => { let data = { "instance": instance, "records": records }; this.OnAfterChanges.emit(data); },
-          onpaste: (instance: any, records: any) => { let data = { "instance": instance, "records": records }; this.OnPaste.emit(data); },
-          onbeforepaste: (instance: any, records: any, x: any, y: any) => { let data = { "instance": instance, "records": records, "x": x, "y": y }; this.OnBeforePaste.emit(data); },
-          onbeforeinsertrow: (instance: any, rowNumber: any, numOfRows: any, insertBefore: any) => { let data = { "instance": instance, "rowNumber": rowNumber, "numOfRows": numOfRows, "insertBefore": insertBefore }; this.OnBeforeInsertRow.emit(data); },
-          onbeforedeleterow: (instance: any, rowNumber: any, numOfRows: any) => { let data = { "instance": instance, "rowNumber": rowNumber, "numOfRows": numOfRows }; this.OnBeforeDeleteRow.emit(data); },
-          onbeforeinsertcolumn: (instance: any, columnNumber: any, numOfColumns: any, insertBefore: any) => { let data = { "instance": instance, "columnNumber": columnNumber, "numOfColumns": numOfColumns, "insertBefore": insertBefore }; this.OnBeforeInsertColumn.emit(data); },
-          onbeforedeletecolumn: (instance: any, columnNumber: any, numOfColumns: any) => { let data = { "instance": instance, "columnNumber": columnNumber, "numOfColumns": numOfColumns }; this.OnBeforeDeleteColumn.emit(data); },
-          onmerge: (instance: any, cellName: any, colspan: any, rowspan: any) => { let data = { "instance": instance, "cellName": cellName, "colspan": colspan, "rowspan": rowspan }; this.OnMerge.emit(data); },
-          onchangeheader: (instance: any, column: any, oldValue: any, newValue: any) => { let data = { "instance": instance, "column": column, "oldValue": oldValue, "newValue": newValue }; this.OnChangeHeader.emit(data); },
-          onundo: (instance: any, historyRecord: any) => { let data = { "instance": instance, "historyRecord": historyRecord }; this.OnUndo.emit(data); },
-          onredo: (instance: any, historyRecord: any) => { let data = { "instance": instance, "historyRecord": historyRecord }; this.OnRedo.emit(data); },
-          oneditionstart: (instance: any, cell: any, x: any, y: any) => { let data = { "instance": instance, "cell": cell, "x": x, "y": y }; this.OnEditionStart.emit(data); },
-          oneditionend: (instance: any, cell: any, x: any, y: any, value: any, save: any) => { let data = { "instance": instance, "cell": cell, "x": x, "y": y, "value": value, "save": save }; this.OnEditionEnd.emit(data); },
-          onchangestyle: (instance: any, o: any, k: any, v: any) => { let data = { "instance": instance, "o": o, "k": k, "v": v }; this.OnChangeStyle.emit(data); },
-          onchangemeta: (instance: any, o: any, k: any, v: any) => { let data = { "instance": instance, "o": o, "k": k, "v": v }; this.OnChangeMeta.emit(data); },
+          onload: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnLoadCALLBACK(event); },
+          onchange: (instance: any, cell: any, x: any, y: any, value: any) => { this.ngModelChange.emit(this.GetData()); this.OnChangeCALLBACK(instance, cell, x, y, value); },
+          onbeforechange: (instance: any, cell: any, x: any, y: any, value: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cell": cell, "x": x, "y": y, "value": value }; this.OnBeforeChange.emit(data); },
+          oninsertrow: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnInsertRow.emit(event); },
+          oninsertcolumn: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnInsertColumn.emit(event); },
+          ondeleterow: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnDeleteRow.emit(event); },
+          ondeletecolumn: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnDeleteColumn.emit(event); },
+          onselection: (instance: any, x1: any, y1: any, x2: any, y2: any, origin: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "x1": x1, "y1": y1, "x2": x2, "y2": y2, "origin": origin }; this.OnSelection.emit(data); },
+          onsort: (instance: any, cellNum: any, order: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cellNum": cellNum, "order": order }; this.OnSort.emit(data); },
+          onresizerow: (instance: any, cell: any, height: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cell": cell, "height": height }; this.OnResizeRow.emit(data); },
+          onresizecolumn: (instance: any, cell: any, width: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cell": cell, "width": width }; this.OnResizeColumn.emit(data); },
+          onmoverow: (instance: any, from: any, to: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "from": from, "to": to }; this.OnMoveRow.emit(data); },
+          onmovecolumn: (instance: any, from: any, to: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "from": from, "to": to }; this.OnMoveColumn.emit(data); },
+          onblur: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnBlur.emit(event); },
+          onfocus: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnFocus.emit(event); },
+          onafterchanges: (instance: any, records: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "records": records }; this.OnAfterChanges.emit(data); },
+          onpaste: (instance: any, records: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "records": records }; this.OnPaste.emit(data); },
+          onbeforepaste: (instance: any, records: any, x: any, y: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "records": records, "x": x, "y": y }; this.OnBeforePaste.emit(data); },
+          onbeforeinsertrow: (instance: any, rowNumber: any, numOfRows: any, insertBefore: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "rowNumber": rowNumber, "numOfRows": numOfRows, "insertBefore": insertBefore }; this.OnBeforeInsertRow.emit(data); },
+          onbeforedeleterow: (instance: any, rowNumber: any, numOfRows: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "rowNumber": rowNumber, "numOfRows": numOfRows }; this.OnBeforeDeleteRow.emit(data); },
+          onbeforeinsertcolumn: (instance: any, columnNumber: any, numOfColumns: any, insertBefore: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "columnNumber": columnNumber, "numOfColumns": numOfColumns, "insertBefore": insertBefore }; this.OnBeforeInsertColumn.emit(data); },
+          onbeforedeletecolumn: (instance: any, columnNumber: any, numOfColumns: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "columnNumber": columnNumber, "numOfColumns": numOfColumns }; this.OnBeforeDeleteColumn.emit(data); },
+          onmerge: (instance: any, cellName: any, colspan: any, rowspan: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cellName": cellName, "colspan": colspan, "rowspan": rowspan }; this.OnMerge.emit(data); },
+          onchangeheader: (instance: any, column: any, oldValue: any, newValue: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "column": column, "oldValue": oldValue, "newValue": newValue }; this.OnChangeHeader.emit(data); },
+          onundo: (instance: any, historyRecord: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "historyRecord": historyRecord }; this.OnUndo.emit(data); },
+          onredo: (instance: any, historyRecord: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "historyRecord": historyRecord }; this.OnRedo.emit(data); },
+          oneditionstart: (instance: any, cell: any, x: any, y: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cell": cell, "x": x, "y": y }; this.OnEditionStart.emit(data); },
+          oneditionend: (instance: any, cell: any, x: any, y: any, value: any, save: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cell": cell, "x": x, "y": y, "value": value, "save": save }; this.OnEditionEnd.emit(data); },
+          onchangestyle: (instance: any, o: any, k: any, v: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "o": o, "k": k, "v": v }; this.OnChangeStyle.emit(data); },
+          onchangemeta: (instance: any, o: any, k: any, v: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "o": o, "k": k, "v": v }; this.OnChangeMeta.emit(data); },
         });
 
         let dataLength = this.JSpreadsheet.getData().length;
@@ -129,6 +131,13 @@ export class AgExcelLibComponent {
     this.AgColumns[x].AgOnChangeSubject.next(data);
   }
 
+  OnLoadCALLBACK(data:any){
+    if(this.GetConfig()){
+      this.AgOnLoad.emit(data);
+    }
+    this.OnLoad.emit(data);
+  }
+
   SetUpColumns() {
     this.AgColumnsBeforeSetup = this.Columns;
 
@@ -149,9 +158,9 @@ export class AgExcelLibComponent {
 
   AddNewRows() {
     for (let index = 0; index < this.AddRowsCount; index++) {
-      this.Data.push([]);
+      this.ngModel.push([]);
     }
-    this.JSpreadsheet.setData(this.Data);
+    this.JSpreadsheet.setData(this.ngModel);
     this.AddRowsCount = 0;
   }
 

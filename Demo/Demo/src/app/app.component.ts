@@ -9,7 +9,7 @@ import { AgExcelLibComponent } from 'ag-excel';
 export class AppComponent {
   @ViewChild(AgExcelLibComponent) JEXCELCOM:AgExcelLibComponent | undefined;
 
-  title = 'test';
+  title = 'Demo';
   Columns: Array<any> = [];
   Data: Array<any> = [];
   
@@ -40,6 +40,7 @@ export class AppComponent {
     console.log(data);
     let ColumnOnChangeObs:any = this.JEXCELCOM?.GetColumnsConfig() || [];
     console.log(this.JEXCELCOM?.GetConfig());
+    console.log(this.JEXCELCOM?.GetData());
     ColumnOnChangeObs.AgColumns[0].AgOnChangeSubject.subscribe((response:any) => {
       console.log(response);
     })
