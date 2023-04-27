@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Observable, Observer, Subject } from 'rxjs';
 import { AgExcelLibService } from './ag-excel-lib.service';
+import { AGEColumn, AGEOnChangeModel } from './ag-excel-lib.models';
 declare var jspreadsheet: any;
 
 @Component({
@@ -20,7 +21,7 @@ export class AgExcelLibComponent {
   @Input() ngModel: Array<any> = [];
   @Output() ngModelChange = new EventEmitter<Array<any>>();
 
-  @Input() Columns: Array<any> = [];
+  @Input() Columns: Array<AGEColumn> = [];
   @Input() setWidthToMaxParent: boolean = false;
   @Input() minColumns: number = 0;
   @Input() minRows: number = 0;
@@ -28,7 +29,7 @@ export class AgExcelLibComponent {
   @Output() AgOnLoad = new EventEmitter<any>();
   @Output() OnLoad = new EventEmitter<any>();
   @Output() OnBeforeChange = new EventEmitter<any>();
-  @Output() OnChange = new EventEmitter<any>();
+  @Output() OnChange = new EventEmitter<AGEOnChangeModel>();
   @Output() OnAfterChanges = new EventEmitter<any>();
   @Output() OnPaste = new EventEmitter<any>();
   @Output() OnBeforePaste = new EventEmitter<any>();
@@ -58,8 +59,10 @@ export class AgExcelLibComponent {
   @Output() OnChangeMeta = new EventEmitter<any>();
 
   JSpreadsheet: any = null;
-  AgColumns: Array<any> = [];
-  AgColumnsBeforeSetup: Array<any> = [];
+  AgColumns: Array<AGEColumn> = [];
+  AgColumnsBeforeSetup: Array<AGEColumn> = [];
+
+  textColumn:AGEColumn = {};
 
   constructor(
     private _AgExcelLib:AgExcelLibService
@@ -110,8 +113,6 @@ export class AgExcelLibComponent {
           onchangemeta: (instance: any, o: any, k: any, v: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "o": o, "k": k, "v": v }; this.OnChangeMeta.emit(data); },
         });
 
-        let dataLength = this.JSpreadsheet.getData().length;
-
         if (this.setWidthToMaxParent) {
           this.SetupWidthToMaxParent();
         }
@@ -122,9 +123,17 @@ export class AgExcelLibComponent {
   }
 
   private OnChangeCALLBACK(instance: any, cell: any, x: any, y: any, value: any) {
-    let data = { "instance": instance, "cell": cell, "x": x, "y": y, "value": value };
+    let data:AGEOnChangeModel = {
+      instance: instance,
+      cell: cell,
+      x: x,
+      y: y,
+      value: value
+    };
     this.OnChange.emit(data);
-    this.AgColumns[x].AgOnChangeSubject.next(data);
+    if(this.AgColumns[x] && this.AgColumns[x].AgOnChangeSubject){
+      this.AgColumns[x].AgOnChangeSubject?.next(data);
+    }
   }
 
   private OnLoadCALLBACK(data:any){

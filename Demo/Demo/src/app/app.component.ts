@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { AgExcelLibComponent } from 'ag-excel';
+import { AGEColumn, AGEOnChangeModel } from 'ag-excel/lib/ag-excel-lib.models';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   @ViewChild(AgExcelLibComponent) JEXCELCOM:AgExcelLibComponent | undefined;
 
   title = 'Demo';
-  Columns: Array<any> = [];
+  Columns: Array<AGEColumn> = [];
   Data: Array<any> = [];
   
   constructor(
@@ -20,6 +21,7 @@ export class AppComponent {
     this.Columns = [
       {
         type: 'text',
+        width: '120px'
       },
       {
         type: 'text',
@@ -44,6 +46,10 @@ export class AppComponent {
     ColumnOnChangeObs.AgColumns[0].AgOnChangeSubject.subscribe((response:any) => {
       console.log(response);
     })
+  }
+
+  OnChange(data:AGEOnChangeModel){
+    console.log(data);
   }
 
   ConsoleThis(data:any){
