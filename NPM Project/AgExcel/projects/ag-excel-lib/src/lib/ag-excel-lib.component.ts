@@ -16,12 +16,14 @@ declare var jspreadsheet: any;
 export class AgExcelLibComponent {
   @ViewChild('spreadsheet', { read: ElementRef })
   spreadsheet: ElementRef<HTMLElement> | undefined;
+
   @Input() ngModel: Array<any> = [];
   @Output() ngModelChange = new EventEmitter<Array<any>>();
 
   @Input() Columns: Array<any> = [];
-  @Input() minRows: number = 10;
   @Input() setWidthToMaxParent: boolean = false;
+  @Input() minColumns: number = 0;
+  @Input() minRows: number = 0;
 
   @Output() AgOnLoad = new EventEmitter<any>();
   @Output() OnLoad = new EventEmitter<any>();
@@ -55,8 +57,6 @@ export class AgExcelLibComponent {
   @Output() OnChangeStyle = new EventEmitter<any>();
   @Output() OnChangeMeta = new EventEmitter<any>();
 
-
-  AddRowsCount: number = 0;
   JSpreadsheet: any = null;
   AgColumns: Array<any> = [];
   AgColumnsBeforeSetup: Array<any> = [];
@@ -77,6 +77,7 @@ export class AgExcelLibComponent {
         this.JSpreadsheet = jspreadsheet(this.spreadsheet?.nativeElement, {
           data: this.ngModel,
           columns: this.Columns,
+          minDimensions: [this.minColumns, this.minRows],
           onload: (event: any) => { this.ngModelChange.emit(this.GetData()); this.OnLoadCALLBACK(event); },
           onchange: (instance: any, cell: any, x: any, y: any, value: any) => { this.ngModelChange.emit(this.GetData()); this.OnChangeCALLBACK(instance, cell, x, y, value); },
           onbeforechange: (instance: any, cell: any, x: any, y: any, value: any) => { this.ngModelChange.emit(this.GetData()); let data = { "instance": instance, "cell": cell, "x": x, "y": y, "value": value }; this.OnBeforeChange.emit(data); },
@@ -114,31 +115,26 @@ export class AgExcelLibComponent {
         if (this.setWidthToMaxParent) {
           this.SetupWidthToMaxParent();
         }
-
-        if (dataLength < this.minRows) {
-          this.AddRowsCount = this.minRows - dataLength;
-          this.AddNewRows();
-        }
       }
       else {
       }
     })
   }
 
-  OnChangeCALLBACK(instance: any, cell: any, x: any, y: any, value: any) {
+  private OnChangeCALLBACK(instance: any, cell: any, x: any, y: any, value: any) {
     let data = { "instance": instance, "cell": cell, "x": x, "y": y, "value": value };
     this.OnChange.emit(data);
     this.AgColumns[x].AgOnChangeSubject.next(data);
   }
 
-  OnLoadCALLBACK(data:any){
+  private OnLoadCALLBACK(data:any){
     if(this.GetConfig()){
       this.AgOnLoad.emit(data);
     }
     this.OnLoad.emit(data);
   }
 
-  SetUpColumns() {
+  private SetUpColumns() {
     this.AgColumnsBeforeSetup = this.Columns;
 
     this.Columns.forEach((column: any) => {
@@ -148,23 +144,7 @@ export class AgExcelLibComponent {
     this.AgColumns = this.Columns;
   }
 
-  GetColumnsConfig() {
-    return {
-      "AgColumns_BeforeSetup": this.AgColumnsBeforeSetup,
-      "AgColumns": this.AgColumns,
-      "Columns": this.Columns,
-    };
-  }
-
-  AddNewRows() {
-    for (let index = 0; index < this.AddRowsCount; index++) {
-      this.ngModel.push([]);
-    }
-    this.JSpreadsheet.setData(this.ngModel);
-    this.AddRowsCount = 0;
-  }
-
-  SetupWidthToMaxParent() {
+  private SetupWidthToMaxParent() {
     let allColumnsWidth: number = this.GetWidth(0).reduce((partialSum: number, a: number) => partialSum + a, 0);
     let parentWidth: number = 0;
 
@@ -184,11 +164,19 @@ export class AgExcelLibComponent {
     }
   }
 
+  GetColumnsConfig() {
+    return {
+      "AgColumnsBeforeSetup": this.AgColumnsBeforeSetup,
+      "AgColumns": this.AgColumns,
+      "Columns": this.Columns,
+    };
+  }
+
   GetJSpreadsheetObject() {
     return this.JSpreadsheet;
   }
 
-  RefreshExcel() { if (this.JSpreadsheet) { return this.JSpreadsheet.refresh(); } else { return null; } }
+  // RefreshExcel() { if (this.JSpreadsheet) { return this.JSpreadsheet.refresh(); } else { return null; } }
   GetData(onlyHighlighedCells: boolean = false) { if (this.JSpreadsheet) { return this.JSpreadsheet.getData(onlyHighlighedCells); } else { return null; } }
   GetRowData(rowNumber: number) { if (this.JSpreadsheet) { return this.JSpreadsheet.getRowData(rowNumber); } else { return null; } }
   SetRowData(rowNumber: number, rowData: Array<any>) { if (this.JSpreadsheet) { return this.JSpreadsheet.setRowData(rowNumber, rowData); } else { return null; } }

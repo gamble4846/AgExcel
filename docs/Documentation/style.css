@@ -172,6 +172,19 @@ pre {
     overflow: auto;
 }
 
+.code{
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid var(--pane-background);
+    color: #666;
+    font-family: monospace;
+    font-size: 14px;
+    display: block;
+    line-height: 1.5;
+    overflow: auto;
+    padding: 10px;
+}
+
 section {
     line-height: 1.7;
 }

@@ -25,10 +25,13 @@
                 <a class="nav-link" href="#Introduction">Introduction</a>
             </li>
             <li>
+                <a class="nav-link" href="#Inputs">Inputs</a>
+            </li>
+            <li>
                 <a class="nav-link" href="#Outputs">Outputs</a>
             </li>
             <li>
-                <a class="nav-link" href="#Inputs">Inputs</a>
+                <a class="nav-link" href="#Methods">Methods</a>
             </li>
         </ul>
         <p class="creator">Made by <a href="mailto:rohanpatel4846@gmail.com">Rohan Patel</a></p>
@@ -79,6 +82,57 @@
             </article>
         </section>
 
+
+
+        <section id="Inputs" class="main-section">
+            <header class="main-header">
+                <h2>Inputs</h2>
+            </header>
+            <article>
+                <div>
+                    <h3>ngModel: Array&lt;any&gt;</h3>
+                    <p>This is Two Way Binded Variable that is used to get and set the data of the AgExcel (JExcel)</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>Columns: Array&lt;any&gt;</h3>
+                    <p>This Variables requires array of column data as follows</p>
+                    <div class="code">
+                        [</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ title:'Model', width:300, type:'text'; },</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ title:'Price', width:80, type:'numeric' },</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ title:'Date', width:100, type:'calendar', options: {
+                        format:'DD/MM/YYYY' } },</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ title:'Photo', width:150, type:'image' },</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ title:'Condition', width:150, type:'dropdown',
+                        source:['New','Used'] },</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ title:'Color', width:80, type:'color' },</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ title:'Available', width:80, type:'checkbox' },</br>
+                        ]</br>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <h3>setWidthToMaxParent: boolean</h3>
+                    <p>Default = False</p>
+                    <p>If set to true columns' width are set to the parents width</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>minColumns: number</h3>
+                    <p>Default = 0</p>
+                    <p>Define a minimum Column size.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>minRows: number</h3>
+                    <p>Default = 0</p>
+                    <p>Define a minimum Row size.</p>
+                </div>
+                <hr>
+            </article>
+        </section>
+
         <section id="Outputs" class="main-section">
             <header class="main-header">
                 <h2>Outputs</h2>
@@ -86,9 +140,11 @@
             <article>
                 <div>
                     <h3>AgOnLoad</h3>
-                    <p>OnLoad Event for JExcel is called when method setData is called so, I've Created a New Event Whihc is called only when JExcel is Loaded</p>
+                    <p>OnLoad Event for JExcel is called when method setData is called so, I've Created a New Event
+                        Whihc is called only when JExcel is Loaded</p>
                     <p><b>JExcel Docs</b> - [onload] This method is called when the method setData</p>
                 </div>
+                <hr>
                 <div>
                     <h3>OnLoad</h3>
                     <p><b>JExcel Docs</b> - [onload] This method is called when the method setData</p>
@@ -117,7 +173,8 @@
                 <hr>
                 <div>
                     <h3>OnBeforePaste</h3>
-                    <p><b>JExcel Docs</b> - [onbeforepaste] Before the paste action is performed. Used to parse any input data, should return the data.</p>
+                    <p><b>JExcel Docs</b> - [onbeforepaste] Before the paste action is performed. Used to parse any
+                        input data, should return the data.</p>
                 </div>
                 <hr>
                 <div>
@@ -127,7 +184,8 @@
                 <hr>
                 <div>
                     <h3>OnBeforeInsertRow</h3>
-                    <p><b>JExcel Docs</b> - [onbeforeinsertrow] Before a new row is inserted. You can cancel the insert event by returning false.</p>
+                    <p><b>JExcel Docs</b> - [onbeforeinsertrow] Before a new row is inserted. You can cancel the insert
+                        event by returning false.</p>
                 </div>
                 <hr>
                 <div>
@@ -137,7 +195,8 @@
                 <hr>
                 <div>
                     <h3>OnBeforeDeleteRow</h3>
-                    <p><b>JExcel Docs</b> - [onbeforedeleterow] Before a row is deleted. You can cancel the delete event by returning false.</p>
+                    <p><b>JExcel Docs</b> - [onbeforedeleterow] Before a row is deleted. You can cancel the delete event
+                        by returning false.</p>
                 </div>
                 <hr>
                 <div>
@@ -147,7 +206,8 @@
                 <hr>
                 <div>
                     <h3>OnBeforeInsertColumn</h3>
-                    <p><b>JExcel Docs</b> - [onbeforeinsertcolumn] Before a new column is inserted. You can cancel the insert event by returning false.</p>
+                    <p><b>JExcel Docs</b> - [onbeforeinsertcolumn] Before a new column is inserted. You can cancel the
+                        insert event by returning false.</p>
                 </div>
                 <hr>
                 <div>
@@ -157,7 +217,8 @@
                 <hr>
                 <div>
                     <h3>OnBeforeDeleteColumn</h3>
-                    <p><b>JExcel Docs</b> - [onbeforedeletecolumn] Before a column is excluded. You can cancel the insert event by returning false.</p>
+                    <p><b>JExcel Docs</b> - [onbeforedeletecolumn] Before a column is excluded. You can cancel the
+                        insert event by returning false.</p>
                 </div>
                 <hr>
                 <div>
@@ -243,41 +304,340 @@
             </article>
         </section>
 
-
-        <section id="Inputs" class="main-section">
+        <section id="Methods" class="main-section">
             <header class="main-header">
-                <h2>Inputs</h2>
+                <h2>Methods</h2>
             </header>
             <article>
-                <p>
-                    AgExcel is a FREE wrapper library for <a href="https://www.npmjs.com/package/jexcel">JExcel v3</a>
-                </p>
-                <p>
-                    JExcel is a lightweight Vanilla JavaScript plugin to create amazing web-based interactive HTML
-                    tables and spreadsheets compatible with other spreadsheet software. You can create an online
-                    spreadsheet table from a JS array, JSON, CSV or XSLX files. You can copy from excel and paste
-                    straight to your Jspreadsheet CE spreadsheet and vice versa. It is very easy to integrate any third
-                    party JavaScript plugins to create your own custom columns, custom editors, and customize any
-                    feature into your application. Jspreadsheet CE has plenty of different input options through its
-                    native column types to cover the most common web-based application requirements. It is a complete
-                    solution for web data management. Create amazing applications with Jspreadsheet CE JavaScript
-                    spreadsheet
-                </p>
-                <p>
-                    JExcel has an angular library but it is paid. Javascript version can be implemented, but scripts and
-                    styles needs to be loaded before hand, AgExcel takes care of loading all the file for you and
-                    AgExcel can be installed to your angular project directly from npm. AgExcel contents all features of
-                    JExcel with extra features such as -
-                    <ul>
-                        <li>Auto Max Width</li>
-                        <li>OnChange Subjects for Every Column</li>
-                        <li>Type Script - Support</li>
-                    </ul>
-                </p>
-                <b>*Next Version of AgExcel will include models for everything (As of now 'any' is used for all) *</b>
+                <div>
+                    <h3>GetColumnsConfig()</h3>
+                    <p>This Method will return an object with Columns (After Passing them to JExcel), AgColumns (After
+                        Updating passed columns with new column data types), AgColumnsBeforeSetup (Original Columns
+                        passed by the Developer)</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetJSpreadsheetObject()</h3>
+                    <p>This Method will return full object of the JExcel</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetData(onlyHighlighedCells: boolean = false)</h3>
+                    <p><b>JExcel Docs</b> - getData: Get the full or partial table data @Param boolan
+                        onlyHighlighedCells - Get only highlighted cells</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetRowData(rowNumber: number)</h3>
+                    <p><b>JExcel Docs</b> - getRowData: Get the data from one row by number @Param integer rowNumber -
+                        Row number</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetRowData(rowNumber: number, rowData: Array<any>)</h3>
+                    <p><b>JExcel Docs</b> - setRowData: Set the data from one row by number @Param integer rowNumber -
+                        Row number @param array rowData - Row data</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetColumnData(columnNumber: number)</h3>
+                    <p><b>JExcel Docs</b> - getColumnData: Get the data from one column by number @Param integer
+                        columnNumber - Column number</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetColumnData(columnNumber: number, colData: Array<any>)</h3>
+                    <p><b>JExcel Docs</b> - setColumnData: Set the data from one column by number @Param integer
+                        columnNumber - Column number @param array colData - Column data</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetData(newData: any)</h3>
+                    <p><b>JExcel Docs</b> - setData: Set the table data @Param json newData - New json data, null will
+                        reload what is in memory.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetMerge(columnName: string, colspan: number, rowspan: number)</h3>
+                    <p><b>JExcel Docs</b> - setMerge: Merge cells @Param string columnName - Column name, such as A1.
+                        @Param integer colspan - Number of columns @Param integer rowspan - Number of rows</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetMerge(columnName: string)</h3>
+                    <p><b>JExcel Docs</b> - getMerge: Get merged cells properties @Param string columnName - Column
+                        name, such as A1.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>RemoveMerge(columnName: string)</h3>
+                    <p><b>JExcel Docs</b> - removeMerge: Destroy merged by column name @Param string columnName - Column
+                        name, such as A1.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>DestroyMerged()</h3>
+                    <p><b>JExcel Docs</b> - destroyMerged: Destroy all merged cells</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetCell(columnName: string)</h3>
+                    <p><b>JExcel Docs</b> - getCell: get current cell DOM @Param string columnName - str compatible with
+                        excel, or as object.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetLabel(columnName: string)</h3>
+                    <p><b>JExcel Docs</b> - getLabel: get current cell DOM innerHTML @Param string columnName - str
+                        compatible with excel, or as object.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetValue(cellIdent: any)</h3>
+                    <p><b>JExcel Docs</b> - getValue: get current cell value @Param mixed cellIdent - str compatible
+                        with excel, or as object.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetValueFromCoords(x: number, y: number)</h3>
+                    <p><b>JExcel Docs</b> - getValueFromCoords: get value from coords @Param integer x @Param integer y
+                    </p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetValue(cellIdent: any, Value: string, force: boolean)</h3>
+                    <p><b>JExcel Docs</b> - setValue: change the cell value @Param mixed cellIdent - str compatible with
+                        excel, or as object. @Param string Value - new value for the cell @Param bool force - update
+                        readonly columns</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetValueFromCoords(x: number, y: number, Value: string, force: boolean)</h3>
+                    <p><b>JExcel Docs</b> - setValueFromCoords: get value from coords @Param integer x @Param integer y
+                        @Param string Value - new value for the cell @Param bool force - update readonly columns</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>ResetSelection(executeBlur: any)</h3>
+                    <p><b>JExcel Docs</b> - resetSelection: Reset the table selection @Param boolean executeBlur -
+                        execute the blur from the table</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>UpdateSelection(startCell: any, endCell: any, ignoreEvents: boolean)</h3>
+                    <p><b>JExcel Docs</b> - updateSelection: select cells @Param object startCell - cell object @Param
+                        object endCell - cell object @Param boolean ignoreEvents - ignore onselection event</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>UpdateSelectionFromCoords(x1: number, y1: number, x2: number, y2: number)</h3>
+                    <p><b>JExcel Docs</b> - updateSelectionFromCoords: select cells @Param integer x1 @Param integer y1
+                        @Param integer x2 @Param integer y2</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetWidth(columnNumber: number)</h3>
+                    <p><b>JExcel Docs</b> - getWidth: get the current column width @Param integer columnNumber - column
+                        number starting on zero</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetWidth(columnNumber: number, newColumnWidth: string)</h3>
+                    <p><b>JExcel Docs</b> - setWidth: change column width @Param integer columnNumber - column number
+                        starting on zero @Param string newColumnWidth - New column width</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetHeight(rowNumber: number)</h3>
+                    <p><b>JExcel Docs</b> - getHeight: get the current row height @Param integer rowNumber - row number
+                        starting on zero</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetHeight(rowNumber: number, newRowHeight: string)</h3>
+                    <p><b>JExcel Docs</b> - setHeight: change row height @Param integer rowNumber - row number starting
+                        on zero @Param string newRowHeight- New row height</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetHeader(columnNumber: number)</h3>
+                    <p><b>JExcel Docs</b> - getHeader: get the current header by column number @Param integer
+                        columnNumber - Column number starting on zero</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetHeaders()</h3>
+                    <p><b>JExcel Docs</b> - getHeaders: get all header titles</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetHeader(columnNumber: number, columnTitle: string)</h3>
+                    <p><b>JExcel Docs</b> - setHeader: change header by column @Param integer columnNumber - column
+                        number starting on zero @Param string columnTitle - New header title</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetStyle(cell: any)</h3>
+                    <p><b>JExcel Docs</b> - getStyle: get table or cell style @Param mixed - cell identification or null
+                        for the whole table.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetStyle(data: any, k: string | undefined = undefined, v: string | undefined = undefined)</h3>
+                    <p><b>JExcel Docs</b> - setStyle: set cell(s) CSS style @Param mixed - json with whole table style
+                        information or just one cell identification. Ex. A1. @param k [optional]- CSS key @param v
+                        [optional]- CSS value</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>ResetStyle(columnName: string)</h3>
+                    <p><b>JExcel Docs</b> - resetStyle: remove all style from a cell @Param string columnName - Column
+                        name, example: A1, B3, etc</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetComments(cellIdentification: any = null)</h3>
+                    <p><b>JExcel Docs</b> - getComments: get cell comments @Param mixed - cell identification or null
+                        for the whole table.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetComments(cell: any, text: string)</h3>
+                    <p><b>JExcel Docs</b> - setComments: set cell comments @Param cell - cell identification @Param text
+                        - comments</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>OrderBy(columnNumber: number, sortType: boolean)</h3>
+                    <p><b>JExcel Docs</b> - orderBy: reorder a column asc or desc @Param integer columnNumber - column
+                        number starting on zero @Param smallint sortType - One will order DESC, zero will order ASC,
+                        anything else will toggle the current order</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetConfig()</h3>
+                    <p><b>JExcel Docs</b> - getConfig: get table definitions</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>InsertColumn(numOfColumns: any, columnNumber: number, insertBefore: boolean, properties: any)
+                    </h3>
+                    <p><b>JExcel Docs</b> - insertColumn: add a new column @param mixed - num of columns to be added or
+                        data to be added in one single column @param int columnNumber - number of columns to be created
+                        @param boolean insertBefore @param object properties - column properties</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>DeleteColumn(columnNumber: number, numOfColumns: number)</h3>
+                    <p><b>JExcel Docs</b> - deleteColumn: remove column by number @Param integer columnNumber - Which
+                        column should be excluded starting on zero @param integer numOfColumns - number of columns to be
+                        excluded from the reference column</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>MoveColumn(columnPosition: number, newColumnPosition: number)</h3>
+                    <p><b>JExcel Docs</b> - moveColumn: change the column position @Param integer columnPosition @Param
+                        integer newColumnPosition</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>InsertRow(numberOfBlankLines: any, rowNumber: number, insertBefore: boolean)</h3>
+                    <p><b>JExcel Docs</b> - insertRow: add a new row @Param mixed - number of blank lines to be insert
+                        or a single array with the data of the new row @Param integer rowNumber - reference row number
+                        @param boolean insertBefore</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>DeleteRow(rowNumber: number, numOfRows: number)</h3>
+                    <p><b>JExcel Docs</b> - deleteRow: remove row by number @Param integer rowNumber - Which row should
+                        be excluded starting on zero @Param integer numOfRows - number of lines to be excluded</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>MoveRow(rowPosition: number, newRowPosition: number)</h3>
+                    <p><b>JExcel Docs</b> - moveRow: change the row position @Param integer rowPosition @Param integer
+                        newRowPosition</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>Download(parsedFormulas: boolean = false)</h3>
+                    <p><b>JExcel Docs</b> - download: get the current data as a CSV file @Param bool - true to download
+                        parsed formulas.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetMeta(cellIdentification: any)</h3>
+                    <p><b>JExcel Docs</b> - getMeta: get the table or cell meta information @Param mixed - cell
+                        identification or null for the whole table.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>SetMeta(Data: any)</h3>
+                    <p><b>JExcel Docs</b> - setMeta: set the table or cell meta information @Param mixed - json with
+                        whole table meta information.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>Fullscreen(fullscreen: boolean)</h3>
+                    <p><b>JExcel Docs</b> - fullscreen: Toogle table fullscreen mode @Param boolan fullscreen - define
+                        fullscreen status as true or false</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetSelectedRows(asIds: boolean)</h3>
+                    <p><b>JExcel Docs</b> - getSelectedRows: Get the selected rows @Param boolan asIds - Get the
+                        rowNumbers or row DOM elements</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>GetSelectedColumns()</h3>
+                    <p><b>JExcel Docs</b> - getSelectedColumns: Get the selected columns</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>ShowIndex()</h3>
+                    <p><b>JExcel Docs</b> - showIndex: show column of index numbers</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>HideIndex()</h3>
+                    <p><b>JExcel Docs</b> - hideIndex: hide column of index numbers</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>Search(searchString: string)</h3>
+                    <p><b>JExcel Docs</b> - search: search in the table, only if directive is enabled during
+                        inialization. @Param string - Search for word</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>ResetSearch()</h3>
+                    <p><b>JExcel Docs</b> - resetSearch: reset search table</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>WhichPage()</h3>
+                    <p><b>JExcel Docs</b> - whichPage: Which page showing on Jspreadsheet - Valid only when pagination
+                        is true.</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>Page(pageNumber: number)</h3>
+                    <p><b>JExcel Docs</b> - page: Go to page number- Valid only when pagination is true. @Param integer
+                        - Go to page number</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>Undo()</h3>
+                    <p><b>JExcel Docs</b> - undo: Undo last changes</p>
+                </div>
+                <hr>
+                <div>
+                    <h3>Redo()</h3>
+                    <p><b>JExcel Docs</b> - redo: Redo changes</p>
+                </div>
             </article>
         </section>
-
     </main>
 </body>
 

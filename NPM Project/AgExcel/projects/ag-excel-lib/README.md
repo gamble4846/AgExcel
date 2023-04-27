@@ -1,6 +1,7 @@
 # AgExcel
 
 AgExcel is an Angular Wrapper for [JExcel V3](https://www.npmjs.com/package/jexcel).
+JExcel has an angular library but it is paid. Javascript version can be implemented, but scripts and styles needs to be loaded before hand, AgExcel takes care of loading all the file for you and AgExcel can be installed to your angular project directly from npm. 
 
 ## Installation
 ###### Install ag-excel
