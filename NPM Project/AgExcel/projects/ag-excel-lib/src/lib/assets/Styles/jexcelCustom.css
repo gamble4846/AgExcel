@@ -15,10 +15,6 @@
     max-width: max-content;
 }
 
-.jexcelContainer{
-    font-family: Rubik;
-}
-
 .jexcel > tbody > tr > td:first-child{
     position: sticky;
     top: 0;
@@ -53,9 +49,4 @@
 .jexcel > tbody > tr > td.readonly {
     color: rgba(0,0,0,0.3);
     background-color: #f3f3f3;
-}
-
-@font-face {
-    font-family: Rubik;
-    src: url("../Fonts/Rubik.ttf");
 }
