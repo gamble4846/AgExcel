@@ -68,7 +68,6 @@ export class AgExcelLibComponent {
     private _AgExcelLib:AgExcelLibService
   ) { }
 
-
   ngOnInit(): void {
     this.UpdateJExcel();
   }
@@ -140,7 +139,12 @@ export class AgExcelLibComponent {
     if(this.GetConfig()){
       this.AgOnLoad.emit(data);
     }
-    this.OnLoad.emit(data);
+    else{
+      this.OnLoad.emit(data);
+      setTimeout(() => {
+        this.OnLoadCALLBACK(data);
+      }, 500);
+    }
   }
 
   private SetUpColumns() {
