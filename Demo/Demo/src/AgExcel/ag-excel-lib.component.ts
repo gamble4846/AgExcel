@@ -78,7 +78,10 @@ export class AgExcelLibComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if(changes['ngModel']){
       if(JSON.stringify(changes['ngModel'].previousValue) != JSON.stringify(changes['ngModel'].currentValue)){
+        console.log(this.GetData());
+        console.log(changes['ngModel'].currentValue);
         if(this.GetData() && changes['ngModel'].currentValue && (JSON.stringify(this.GetData()) != JSON.stringify(changes['ngModel'].currentValue))){
+          console.log("this.SetData");
           this.SetData(changes['ngModel'].currentValue);
         }
       }

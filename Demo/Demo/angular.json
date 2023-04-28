@@ -25,7 +25,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "./node_modules/ag-excel/assets/AgExcel",
+                "input": "src/AgExcel/assets/",
                 "output": "./assets/AgExcel"
               }
             ],

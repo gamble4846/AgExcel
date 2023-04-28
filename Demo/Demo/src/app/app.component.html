@@ -1,4 +1,5 @@
 <div>
   <AgExcel #JEXCELCOM [Columns]="Columns" [(ngModel)]="Data" [minRows]="10" [setWidthToMaxParent]="false" (OnChange)="OnChange($event)" (AgOnLoad)="AfterOnLoad($event)"></AgExcel>
 </div>
-<button (click)="ConsoleThis(Data)">Console Data</button>
+
+<button (click)="UpdateData()">Update Data</button><button (click)="ConsoleThis(Data)">Console Data</button>

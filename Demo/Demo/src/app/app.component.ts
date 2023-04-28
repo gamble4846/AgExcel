@@ -1,6 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { AgExcelLibComponent } from 'ag-excel';
 import { AGEColumn, AGEOnChangeModel } from 'ag-excel/lib/ag-excel-lib.models';
+// import { AgExcelLibComponent } from 'src/AgExcel/ag-excel-lib.component';
+// import { AGEColumn, AGEOnChangeModel } from 'src/AgExcel/ag-excel-lib.models';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,7 @@ export class AppComponent {
   Data: Array<any> = [];
   
   constructor(
+    private cdref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -54,5 +57,9 @@ export class AppComponent {
 
   ConsoleThis(data:any){
     console.log(data);
+  }
+
+  UpdateData(){
+    this.Data = [["a","b","c"]]
   }
 }
