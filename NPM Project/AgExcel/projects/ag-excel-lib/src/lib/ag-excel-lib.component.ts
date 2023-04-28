@@ -143,10 +143,8 @@ export class AgExcelLibComponent implements OnChanges {
       value: value
     };
     this.OnChange.emit(data);
-    console.log("this.OnChange.emit(data);");
     if(this.AgColumns[x] && this.AgColumns[x].AgOnChangeSubject && !this.SubCalledColumns.includes(x)){
       this.AgColumns[x].AgOnChangeSubject?.next(data);
-      console.log("this.AgColumns[x].AgOnChangeSubject?.next(data);");
     }
   }
 

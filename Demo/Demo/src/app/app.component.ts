@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { AgExcelLibComponent } from 'ag-excel';
-import { AGEColumn, AGEOnChangeModel } from 'ag-excel/lib/ag-excel-lib.models';
-// import { AgExcelLibComponent } from 'src/AgExcel/ag-excel-lib.component';
-// import { AGEColumn, AGEOnChangeModel } from 'src/AgExcel/ag-excel-lib.models';
+// import { AgExcelLibComponent } from 'ag-excel';
+// import { AGEColumn, AGEOnChangeModel } from 'ag-excel/lib/ag-excel-lib.models';
+import { AgExcelLibComponent } from 'src/AgExcel/ag-excel-lib.component';
+import { AGEColumn, AGEOnChangeModel } from 'src/AgExcel/ag-excel-lib.models';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +23,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.Columns = [
       {
-        type: 'text',
-        width: '120px'
+        type: 'text'
       },
       {
         type: 'text',
@@ -44,8 +43,7 @@ export class AppComponent {
     console.log("here");
     console.log(data);
     let ColumnOnChangeObs:any = this.JEXCELCOM?.GetColumnsConfig() || [];
-    console.log(this.JEXCELCOM?.GetConfig());
-    console.log(this.JEXCELCOM?.GetData());
+    console.log(ColumnOnChangeObs);
     ColumnOnChangeObs.AgColumns[0].AgOnChangeSubject.subscribe((response:any) => {
       console.log(response);
     })

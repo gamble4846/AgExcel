@@ -78,10 +78,7 @@ export class AgExcelLibComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if(changes['ngModel']){
       if(JSON.stringify(changes['ngModel'].previousValue) != JSON.stringify(changes['ngModel'].currentValue)){
-        console.log(this.GetData());
-        console.log(changes['ngModel'].currentValue);
         if(this.GetData() && changes['ngModel'].currentValue && (JSON.stringify(this.GetData()) != JSON.stringify(changes['ngModel'].currentValue))){
-          console.log("this.SetData");
           this.SetData(changes['ngModel'].currentValue);
         }
       }
@@ -146,10 +143,8 @@ export class AgExcelLibComponent implements OnChanges {
       value: value
     };
     this.OnChange.emit(data);
-    console.log("this.OnChange.emit(data);");
-    if(this.AgColumns[x] && this.AgColumns[x].AgOnChangeSubject && !this.SubCalledColumns.includes(x)){
+    if(this.AgColumns[x] && this.AgColumns[x].AgOnChangeSubject){
       this.AgColumns[x].AgOnChangeSubject?.next(data);
-      console.log("this.AgColumns[x].AgOnChangeSubject?.next(data);");
     }
   }
 
